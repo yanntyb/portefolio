@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+.main-title{
+    width: 100%;
+    text-align: center;
+    font-size: 160%;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.main-title > span{
+    opacity: 0;
+}
+
+@keyframes fadein{
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 100;
+    }
+}
