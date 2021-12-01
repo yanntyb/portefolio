@@ -2,6 +2,51 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/classes/Nav.js":
+/*!**********************************!*\
+  !*** ./assets/js/classes/Nav.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Nav": () => (/* binding */ Nav)
+/* harmony export */ });
+class Nav{
+    constructor(elem,scrollTop){
+        this.elem = elem;
+        this.scrollTop = scrollTop;
+        this.event();
+    }
+
+    animate(change,animationElemName,durationElem,animationChildName,durationChild){
+        this.elem.dataset.change = change;
+        this.elem.style.animationName = animationElemName;
+        this.elem.style.animationDuration = durationElem;
+        this.elem.style.animationFillMode = "forwards";
+        for(let child of this.elem.children){
+            child.style.animationName = animationChildName;
+            child.style.animationDuration = durationChild;
+            child.style.animationFillMode = "forwards";
+        }
+    }
+
+    event(){
+        window.addEventListener("scroll", (e) => {
+            if(window.scrollY > this.scrollTop && this.elem.dataset.change !== "true"){
+                this.animate("true","bg-toWhite","1000ms","color-toBlack","1000ms");
+            }
+            if(window.scrollY < this.scrollTop && this.elem.dataset.change === "true"){
+                this.animate("false","bg-toRgb","1000ms","color-toWhite","1000ms")
+            }
+        });
+    }
+}
+
+
+
+/***/ }),
+
 /***/ "./assets/js/classes/TextAnim.js":
 /*!***************************************!*\
   !*** ./assets/js/classes/TextAnim.js ***!
@@ -95,11 +140,15 @@ class TextAnim {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_home_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/home.css */ "./assets/css/home.css");
 /* harmony import */ var _classes_TextAnim__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./classes/TextAnim */ "./assets/js/classes/TextAnim.js");
+/* harmony import */ var _classes_Nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./classes/Nav */ "./assets/js/classes/Nav.js");
+
 
 
 
 new _classes_TextAnim__WEBPACK_IMPORTED_MODULE_1__.TextAnim("#first","Yann Tyburczy",100)
 new _classes_TextAnim__WEBPACK_IMPORTED_MODULE_1__.TextAnim("#second","Développeur Web / Web mobile$Freelance",200,"$");
+
+new _classes_Nav__WEBPACK_IMPORTED_MODULE_2__.Nav(document.querySelector("#nav"),40);
 
 
 /***/ }),
@@ -131,6 +180,32 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".main-title{\r\n    position: relative
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/component/nav.css":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/component/nav.css ***!
+  \********************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "#nav{\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 10vh;\r\n    z-index: 10;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n    background-color: rgba(194, 194, 194, 0.30);\r\n    box-shadow: 0px 0px 8px 7px rgba(0,0,0,0.3);\r\n}\r\n\r\n#nav > *{\r\n    text-decoration: none;\r\n    text-transform: uppercase;\r\n    color: whitesmoke;\r\n}\r\n\r\n@keyframes bg-toWhite{\r\n    from{\r\n        background-color: rgba(194, 194, 194, 0.30);\r\n    }\r\n    to{\r\n        background-color: whitesmoke;\r\n    }\r\n}\r\n\r\n@keyframes bg-toRgb{\r\n    from{\r\n        background-color: whitesmoke;\r\n    }\r\n    to{\r\n        background-color: rgba(194, 194, 194, 0.30);\r\n    }\r\n}\r\n\r\n@keyframes color-toBlack{\r\n    from {\r\n        color: whitesmoke;\r\n    }\r\n    to{\r\n        color: black;\r\n    }\r\n}\r\n@keyframes color-toWhite{\r\n    from {\r\n        color: black;\r\n    }\r\n    to{\r\n        color: whitesmoke;\r\n    }\r\n}\r\n", "",{"version":3,"sources":["webpack://./assets/css/component/nav.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,MAAM;IACN,OAAO;IACP,WAAW;IACX,YAAY;IACZ,WAAW;IACX,aAAa;IACb,mBAAmB;IACnB,6BAA6B;IAC7B,mBAAmB;IACnB,2CAA2C;IAC3C,2CAA2C;AAC/C;;AAEA;IACI,qBAAqB;IACrB,yBAAyB;IACzB,iBAAiB;AACrB;;AAEA;IACI;QACI,2CAA2C;IAC/C;IACA;QACI,4BAA4B;IAChC;AACJ;;AAEA;IACI;QACI,4BAA4B;IAChC;IACA;QACI,2CAA2C;IAC/C;AACJ;;AAEA;IACI;QACI,iBAAiB;IACrB;IACA;QACI,YAAY;IAChB;AACJ;AACA;IACI;QACI,YAAY;IAChB;IACA;QACI,iBAAiB;IACrB;AACJ","sourcesContent":["#nav{\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 10vh;\r\n    z-index: 10;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n    background-color: rgba(194, 194, 194, 0.30);\r\n    box-shadow: 0px 0px 8px 7px rgba(0,0,0,0.3);\r\n}\r\n\r\n#nav > *{\r\n    text-decoration: none;\r\n    text-transform: uppercase;\r\n    color: whitesmoke;\r\n}\r\n\r\n@keyframes bg-toWhite{\r\n    from{\r\n        background-color: rgba(194, 194, 194, 0.30);\r\n    }\r\n    to{\r\n        background-color: whitesmoke;\r\n    }\r\n}\r\n\r\n@keyframes bg-toRgb{\r\n    from{\r\n        background-color: whitesmoke;\r\n    }\r\n    to{\r\n        background-color: rgba(194, 194, 194, 0.30);\r\n    }\r\n}\r\n\r\n@keyframes color-toBlack{\r\n    from {\r\n        color: whitesmoke;\r\n    }\r\n    to{\r\n        color: black;\r\n    }\r\n}\r\n@keyframes color-toWhite{\r\n    from {\r\n        color: black;\r\n    }\r\n    to{\r\n        color: whitesmoke;\r\n    }\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/home.css":
 /*!***********************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/home.css ***!
@@ -146,9 +221,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_1_component_main_title_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./component/main-title.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/component/main-title.css");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_1_component_nav_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./component/nav.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/component/nav.css");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_4__);
 // Imports
+
 
 
 
@@ -156,9 +233,10 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../image/backgound1.jpg */ "./assets/image/backgound1.jpg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_1_component_main_title_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_0___);
+___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_1_component_nav_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_4___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#main{\r\n    position: relative;\r\n    top: 0;\r\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n    background-size: cover;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\n#presentation{\r\n    top: 30%;\r\n    position: relative;\r\n}\r\n\r\n#presentation #first{\r\n    font-size: 80%;\r\n    margin-bottom: 2%;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/home.css"],"names":[],"mappings":"AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,yDAAgD;IAChD,sBAAsB;IACtB,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,QAAQ;IACR,kBAAkB;AACtB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB","sourcesContent":["@import \"component/main-title.css\";\r\n\r\n#main{\r\n    position: relative;\r\n    top: 0;\r\n    background-image: url(\"../image/backgound1.jpg\");\r\n    background-size: cover;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\n#presentation{\r\n    top: 30%;\r\n    position: relative;\r\n}\r\n\r\n#presentation #first{\r\n    font-size: 80%;\r\n    margin-bottom: 2%;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "#main{\r\n    position: relative;\r\n    top: 0;\r\n    width: 100%;\r\n}\r\n\r\n.presentation{\r\n    padding-top: 15%;\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\n.presentation #first{\r\n    font-size: 80%;\r\n    margin-bottom: 2%;\r\n}\r\n\r\n#pres-1{\r\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n    background-size: cover;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/home.css"],"names":[],"mappings":"AAGA;IACI,kBAAkB;IAClB,MAAM;IACN,WAAW;AACf;;AAEA;IACI,gBAAgB;IAChB,kBAAkB;IAClB,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,yDAAgD;IAChD,sBAAsB;AAC1B","sourcesContent":["@import \"component/main-title.css\";\r\n@import \"component/nav.css\";\r\n\r\n#main{\r\n    position: relative;\r\n    top: 0;\r\n    width: 100%;\r\n}\r\n\r\n.presentation{\r\n    padding-top: 15%;\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\n.presentation #first{\r\n    font-size: 80%;\r\n    margin-bottom: 2%;\r\n}\r\n\r\n#pres-1{\r\n    background-image: url(\"../image/backgound1.jpg\");\r\n    background-size: cover;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -185,7 +263,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody{\r\n    width: 100vw;\r\n    font-family: 'Merriweather', serif;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/reset.css"],"names":[],"mappings":"AAEA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;AAC1B;;AAEA;IACI,YAAY;IACZ,kCAAkC;AACtC","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');\r\n\r\n*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody{\r\n    width: 100vw;\r\n    font-family: 'Merriweather', serif;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody{\r\n    width: 100vw;\r\n    font-family: 'Merriweather', serif;\r\n    overflow-x: hidden;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/reset.css"],"names":[],"mappings":"AAEA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;AAC1B;;AAEA;IACI,YAAY;IACZ,kCAAkC;IAClC,kBAAkB;AACtB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');\r\n\r\n*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody{\r\n    width: 100vw;\r\n    font-family: 'Merriweather', serif;\r\n    overflow-x: hidden;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -9,4 +9,5 @@
 body{
     width: 100vw;
     font-family: 'Merriweather', serif;
+    overflow-x: hidden;
 }
