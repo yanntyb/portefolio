@@ -1,4 +1,5 @@
 import "../css/home.css"
 import {TextAnim} from "./classes/TextAnim";
 
-new TextAnim(document.querySelector("#presentation"),"Développeur Web / Web mobile$Freelance",100);
+new TextAnim("#first","Yann Tyburczy",100)
+new TextAnim("#second","Développeur Web / Web mobile$Freelance",200,"$");

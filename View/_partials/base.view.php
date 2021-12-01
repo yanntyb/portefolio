@@ -13,6 +13,7 @@ if(isset($include["dir"])){
     <title><?= ucfirst($title) ?></title>
 </head>
 <body>
+    <?php require("../View/_partials/navbar.php") ?>
     <?= $html ?>
 </body>
 </html>

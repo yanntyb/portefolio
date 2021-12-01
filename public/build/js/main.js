@@ -14,15 +14,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 class TextAnim {
     /**
-     * content with $ result in a <br>
-     * @param parent div to be append
-     * @param content text to display
-     * @param speed milliseconde before each step
+     *
+     * @param parent
+     * @param content
+     * @param speed
+     * @param br
      */
-    constructor(parent, content, speed) {
-        this.parent = parent;
+    constructor(parent, content, speed, br) {
+        this.parent = document.querySelector(parent);
         this.content = content;
         this.speed = speed;
+        this.br = br;
         this.div = null;
         this.span = [];
         this.index = 0;
@@ -35,13 +37,13 @@ class TextAnim {
         this.parent.appendChild(this.div);
         this.div.classList.add("main-title");
         for(let char of this.content){
-            if(char === "$"){
+            if(char === this.br){
                 this.div.innerHTML += "<br>";
             }
             else{
                 const span = document.createElement("span");
                 this.div.appendChild(span);
-                span.innerHTML = char;
+                span.innerText = char;
                 this.span.push(span);
                 this.len++;
             }
@@ -59,7 +61,7 @@ class TextAnim {
             this.index++;
             if(this.index === this.len){
                 window.setTimeout(() => {
-                    //this.clearDom();
+                    this.clearDom();
                 },this.speed + 100);
                 clearInterval(this.interval);
 
@@ -69,7 +71,7 @@ class TextAnim {
 
     clearDom(){
         for(let span of this.span){
-            this.div.innerHTML = this.content.replace("$","<br>");
+            this.div.innerHTML = this.content.replace(this.br,"<br>");
             span.remove();
         }
     }
@@ -96,7 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-new _classes_TextAnim__WEBPACK_IMPORTED_MODULE_1__.TextAnim(document.querySelector("#presentation"),"Développeur Web / Web mobile$Freelance",100);
+new _classes_TextAnim__WEBPACK_IMPORTED_MODULE_1__.TextAnim("#first","Yann Tyburczy",100)
+new _classes_TextAnim__WEBPACK_IMPORTED_MODULE_1__.TextAnim("#second","Développeur Web / Web mobile$Freelance",200,"$");
 
 
 /***/ }),
@@ -119,9 +122,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Merriweather&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".main-title{\r\n    width: 100%;\r\n    text-align: center;\r\n    font-size: 160%;\r\n    font-family: 'Shadows Into Light', cursive;\r\n}\r\n\r\n.main-title > span{\r\n    opacity: 0;\r\n}\r\n\r\n@keyframes fadein{\r\n    from {\r\n        opacity: 0;\r\n    }\r\n    to{\r\n        opacity: 100;\r\n    }\r\n}", "",{"version":3,"sources":["webpack://./assets/css/component/main-title.css"],"names":[],"mappings":"AAEA;IACI,WAAW;IACX,kBAAkB;IAClB,eAAe;IACf,0CAA0C;AAC9C;;AAEA;IACI,UAAU;AACd;;AAEA;IACI;QACI,UAAU;IACd;IACA;QACI,YAAY;IAChB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');\r\n\r\n.main-title{\r\n    width: 100%;\r\n    text-align: center;\r\n    font-size: 160%;\r\n    font-family: 'Shadows Into Light', cursive;\r\n}\r\n\r\n.main-title > span{\r\n    opacity: 0;\r\n}\r\n\r\n@keyframes fadein{\r\n    from {\r\n        opacity: 0;\r\n    }\r\n    to{\r\n        opacity: 100;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".main-title{\r\n    position: relative;\r\n    width: 100%;\r\n    text-align: center;\r\n    font-size: 280%;\r\n    text-transform: uppercase;\r\n    font-family: 'Merriweather', serif;\r\n    color: whitesmoke;\r\n}\r\n\r\n.main-title > span{\r\n    opacity: 0;\r\n}\r\n\r\n@keyframes fadein{\r\n    from {\r\n        opacity: 0;\r\n    }\r\n    to{\r\n        opacity: 100;\r\n    }\r\n}", "",{"version":3,"sources":["webpack://./assets/css/component/main-title.css"],"names":[],"mappings":"AAEA;IACI,kBAAkB;IAClB,WAAW;IACX,kBAAkB;IAClB,eAAe;IACf,yBAAyB;IACzB,kCAAkC;IAClC,iBAAiB;AACrB;;AAEA;IACI,UAAU;AACd;;AAEA;IACI;QACI,UAAU;IACd;IACA;QACI,YAAY;IAChB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');\r\n\r\n.main-title{\r\n    position: relative;\r\n    width: 100%;\r\n    text-align: center;\r\n    font-size: 280%;\r\n    text-transform: uppercase;\r\n    font-family: 'Merriweather', serif;\r\n    color: whitesmoke;\r\n}\r\n\r\n.main-title > span{\r\n    opacity: 0;\r\n}\r\n\r\n@keyframes fadein{\r\n    from {\r\n        opacity: 0;\r\n    }\r\n    to{\r\n        opacity: 100;\r\n    }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -143,14 +146,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_1_component_main_title_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./component/main-title.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./assets/css/component/main-title.css");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3__);
 // Imports
 
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../image/backgound1.jpg */ "./assets/image/backgound1.jpg"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_0_use_1_component_main_title_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "#main{\r\n    position: relative;\r\n    top: 0;\r\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n    background-size: cover;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\n#presentation{\r\n    top: 30%;\r\n    position: relative;\r\n}\r\n\r\n#presentation #first{\r\n    font-size: 80%;\r\n    margin-bottom: 2%;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/home.css"],"names":[],"mappings":"AAEA;IACI,kBAAkB;IAClB,MAAM;IACN,yDAAgD;IAChD,sBAAsB;IACtB,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,QAAQ;IACR,kBAAkB;AACtB;;AAEA;IACI,cAAc;IACd,iBAAiB;AACrB","sourcesContent":["@import \"component/main-title.css\";\r\n\r\n#main{\r\n    position: relative;\r\n    top: 0;\r\n    background-image: url(\"../image/backgound1.jpg\");\r\n    background-size: cover;\r\n    width: 100%;\r\n    height: 100vh;\r\n}\r\n\r\n#presentation{\r\n    top: 30%;\r\n    position: relative;\r\n}\r\n\r\n#presentation #first{\r\n    font-size: 80%;\r\n    margin-bottom: 2%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -175,8 +183,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/reset.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;AAC1B","sourcesContent":["*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody{\r\n    width: 100vw;\r\n    font-family: 'Merriweather', serif;\r\n}", "",{"version":3,"sources":["webpack://./assets/css/reset.css"],"names":[],"mappings":"AAEA;IACI,SAAS;IACT,UAAU;IACV,sBAAsB;AAC1B;;AAEA;IACI,YAAY;IACZ,kCAAkC;AACtC","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');\r\n\r\n*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody{\r\n    width: 100vw;\r\n    font-family: 'Merriweather', serif;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -290,6 +299,44 @@ module.exports = function (cssWithMappingToString) {
   };
 
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+
+  if (!url) {
+    return url;
+  }
+
+  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
+
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+
+  return url;
 };
 
 /***/ }),
@@ -737,6 +784,16 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./assets/image/backgound1.jpg":
+/*!*************************************!*\
+  !*** ./assets/image/backgound1.jpg ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "build/images/backgound1.jpg";
+
 /***/ })
 
 /******/ 	});
@@ -764,6 +821,9 @@ module.exports = styleTagTransform;
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
@@ -804,6 +864,37 @@ module.exports = styleTagTransform;
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "/";
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
 /************************************************************************/

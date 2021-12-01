@@ -1,14 +1,16 @@
 class TextAnim {
     /**
-     * content with $ result in a <br>
-     * @param parent div to be append
-     * @param content text to display
-     * @param speed milliseconde before each step
+     *
+     * @param parent
+     * @param content
+     * @param speed
+     * @param br
      */
-    constructor(parent, content, speed) {
-        this.parent = parent;
+    constructor(parent, content, speed, br) {
+        this.parent = document.querySelector(parent);
         this.content = content;
         this.speed = speed;
+        this.br = br;
         this.div = null;
         this.span = [];
         this.index = 0;
@@ -21,13 +23,13 @@ class TextAnim {
         this.parent.appendChild(this.div);
         this.div.classList.add("main-title");
         for(let char of this.content){
-            if(char === "$"){
+            if(char === this.br){
                 this.div.innerHTML += "<br>";
             }
             else{
                 const span = document.createElement("span");
                 this.div.appendChild(span);
-                span.innerHTML = char;
+                span.innerText = char;
                 this.span.push(span);
                 this.len++;
             }
@@ -45,7 +47,7 @@ class TextAnim {
             this.index++;
             if(this.index === this.len){
                 window.setTimeout(() => {
-                    //this.clearDom();
+                    this.clearDom();
                 },this.speed + 100);
                 clearInterval(this.interval);
 
@@ -55,7 +57,7 @@ class TextAnim {
 
     clearDom(){
         for(let span of this.span){
-            this.div.innerHTML = this.content.replace("$","<br>");
+            this.div.innerHTML = this.content.replace(this.br,"<br>");
             span.remove();
         }
     }
