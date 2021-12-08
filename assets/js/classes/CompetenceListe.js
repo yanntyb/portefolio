@@ -79,7 +79,7 @@ class CompetenceListe {
     createChild(data){
         this.div = document.createElement("div");
         this.parent.appendChild(this.div);
-        this.div.id = "competence";
+        this.div.className = "competence-list";
         newExposure.pushListeningEle(this.div, () => {
             if(!this.display){
                 this.display = true;
