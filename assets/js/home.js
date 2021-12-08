@@ -49,5 +49,6 @@ new TextAnimManager(document.querySelector("#second"),
     }
 )
 
-new CompetenceListe(document.querySelector("#pres-2"));
+new CompetenceListe(document.querySelector("#pres-2"),"competence");
+new CompetenceListe(document.querySelector("#pres-3"),"formation");
 new Nav(nav,70);

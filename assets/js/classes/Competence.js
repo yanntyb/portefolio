@@ -30,7 +30,7 @@ class Competence{
             this.div.style.animationFillMode = "forwards";
         }
 
-        new TextAnim(this.div.querySelector(".content"),[this.data.content],10);
+        new TextAnim(this.div.querySelector(".content"),this.data.content,10);
     }
 
     __init__(){
