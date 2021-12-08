@@ -1,11 +1,12 @@
 import {TextAnim} from "./TextAnim";
 
 class Competence{
-    constructor(parent,index,data) {
+    constructor(parent,index,data, strictHtml = false) {
         this.parent = parent;
         this.index = index;
         this.div = null;
         this.data = data;
+        this.strictHtml = strictHtml;
         this.__init__();
     }
 
@@ -25,7 +26,15 @@ class Competence{
         else{
             this.animate("fadeinRight");
         }
-        new TextAnim(this.div.querySelector(".content"),this.data.content,30);
+        if(this.strictHtml === false){
+            new TextAnim(this.div.querySelector(".content"),this.data.content,30);
+        }
+        else{
+            for(let data of this.data.content){
+                this.div.querySelector(".content").innerHTML += data;
+            }
+        }
+
     }
 
     animate(animationName){

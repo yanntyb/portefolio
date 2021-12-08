@@ -13,8 +13,31 @@ class CompetenceListe {
     }
 
     getData(dev){
+        const dataContact = {
+            1: {
+                "title": "Envoyer un mail",
+                "content": [
+                    `
+                    <form method="post" id="contact">
+                        <div>
+                            <input type="email" placeholder="Mail" required>
+                            <input type="text" placeholder="Sujet" required>
+                            <input type="text" placeholder="Contenue" required>
+                        </div>
+                    </form>
+                    `
+                ],
+                "strict": true
+            },
+            2: {
+                "title": "Téléphone",
+                "content": ["+33616331402","Lundi au Vendredi : 9h/17h"],
+            }
+        };
         if(!dev){
-
+            if(this.api === "contact"){
+                this.createChild(dataContact);
+            }
         }
         else{
             switch(this.api){
@@ -70,6 +93,10 @@ class CompetenceListe {
                         }
                     }
                     this.createChild(dataForm)
+                    break;
+                case "contact":
+                    this.createChild(dataContact);
+                    break;
             }
         }
     }
@@ -84,7 +111,13 @@ class CompetenceListe {
                 this.display = true;
                 let index = 0;
                 for(let i of Object.keys(data)){
-                    this.child.push(new Competence(this.div,index,data[i]));
+                    if(data[i].strict === true){
+                        this.child.push(new Competence(this.div,index,data[i], true));
+                    }
+                    else{
+                        this.child.push(new Competence(this.div,index,data[i], false));
+                    }
+
                     index ++;
                 }
 
