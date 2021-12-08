@@ -29,8 +29,7 @@ class Competence{
             this.div.style.animationDuration = `${Math.floor(Math.random() * (3000 - 1100 + 1) + 1100)}ms`;
             this.div.style.animationFillMode = "forwards";
         }
-
-        new TextAnim(this.div.querySelector(".content"),this.data.content,10);
+        new TextAnim(this.div.querySelector(".content"),this.data.content,30);
     }
 
     __init__(){

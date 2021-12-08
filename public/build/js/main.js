@@ -44,8 +44,7 @@ class Competence{
             this.div.style.animationDuration = `${Math.floor(Math.random() * (3000 - 1100 + 1) + 1100)}ms`;
             this.div.style.animationFillMode = "forwards";
         }
-
-        new _TextAnim__WEBPACK_IMPORTED_MODULE_0__.TextAnim(this.div.querySelector(".content"),this.data.content,10);
+        new _TextAnim__WEBPACK_IMPORTED_MODULE_0__.TextAnim(this.div.querySelector(".content"),this.data.content,30);
     }
 
     __init__(){
@@ -135,12 +134,12 @@ class CompetenceListe {
                         },
                         2: {
                             "title": "Concepteur Développeur d'Application",
-                            "content": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum erat in feugiat ultrices. Nunc ultrices ipsum orci, eu ornare lectus dignissim eget. Pellentesque ultrices posuere urna. Sed nisi odio, sollicitudin posuere interdum quis, pellentesque et purus. Praesent cursus tristique porttitor."]
+                            "content": ["Competence / Competence 1","Competence 2","Competence 3","Competence / Competence 4", "Competence 5"]
                         },
                     }
-                    for(let cont of Object.keys(dataForm)){
-                        for(let index in dataForm[cont].content){
-                            dataForm[cont].content[index] = "- " + dataForm[cont].content[index];
+                    for(let indexData of Object.keys(dataForm)){
+                        for(let index in dataForm[indexData].content){
+                            dataForm[indexData].content[index] = "- " + dataForm[indexData].content[index];
                         }
                     }
                     this.createChild(dataForm)
@@ -154,8 +153,9 @@ class CompetenceListe {
         this.div = document.createElement("div");
         this.parent.appendChild(this.div);
         this.div.className = "competence-list";
+        let nav = document.querySelector("#nav");
         newexposure__WEBPACK_IMPORTED_MODULE_1__["default"].pushListeningEle(this.div, () => {
-            if(!this.display){
+            if(!this.display && nav.dataset.change){
                 this.display = true;
                 let index = 0;
                 for(let i of Object.keys(data)){
@@ -240,7 +240,7 @@ class TextAnim {
      * @param parent
      * @param content
      * @param speed
-     * @param remove
+     * @param removeDiv
      * @param callback
      * @param timeoutCallback
      */
@@ -308,6 +308,7 @@ class TextAnim {
         this.div.innerHTML = '';
         for(let span of this.content){
             this.div.innerHTML += span;
+            console.log(span);
             if(span !== this.content.slice(-1)[0]){
                 const br = document.createElement("br");
                 this.div.appendChild(br);
