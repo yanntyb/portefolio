@@ -28,8 +28,8 @@ class TextAnimManager{
                 if(index > Object.keys(this.data).length){
                     index = 1;
                 }
-            },3000)
-        },len * this.data[index].speed * 2 + 1000 )
+            },2000)
+        },len * this.data[index].speed * 1.5)
     }
 }
 
