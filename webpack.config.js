@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     const config = argv.mode === 'development' ? devConfig() : prodConfig();
     return {
         entry: {
-            main: "./assets/main.js"
+            main: "./assets/main.js",
         },
 
         output: {
@@ -32,12 +32,8 @@ function devConfig() {
         module: {
             rules: [
                 {
-                    test: /\.css$/i,
-                    use: ["style-loader", {loader: "css-loader", options: {sourceMap: true}}]
-                },
-                {
-                    test: /\.scss$/i,
-                    use: ["style-loader","sass-loader"]
+                    test: /\.(s)css$/i,
+                    use: ["style-loader", {loader: "css-loader", options: {sourceMap: true}},"sass-loader"]
                 },
                 // Règles fichiers images
                 {

@@ -1,0 +1,92 @@
+@use "./component/main-title";
+@use "./component/nav";
+@use "./component/competence";
+@use "sass:list";
+
+#main{
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.presentation{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    box-shadow: 0px 0px 8px 7px rgba(0,0,0,0.3);
+
+    #first{
+        font-size: 80%;
+        padding-top: 17%;
+
+    }
+
+    &#pres-2{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        #competence{
+            overflow: hidden;
+            position: relative;
+            top: 5%;
+            width: 80%;
+            height: 70%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+
+        }
+    }
+
+}
+
+$max:5;
+$existing-bg: 1 2 3 4;
+@for $i from 1 to $max{
+    #pres-#{$i}{
+        z-index: $max - $i + 5;
+        @if $i <= list.length($existing-bg){
+            background-image: url("../image/backgound#{$i}.jpg");
+            background-size: cover;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #000000;
+}
+::-webkit-scrollbar-track {
+    background: #666666;
+    border: 0px none #ffffff;
+}
+::-webkit-scrollbar-track:hover {
+    background: #666666;
+}
+::-webkit-scrollbar-track:active {
+    background: #333333;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

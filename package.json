@@ -30,6 +30,10 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
+    "bv-ui-pixels-displayed": "^1.0.0",
+    "is-element-visible": "^1.0.1",
+    "newexposure": "^2.0.1",
+    "phaser": "^3.55.2",
     "sweet-scroll": "^4.0.0"
   }
 }

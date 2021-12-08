@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
 
 .main-title{
     position: relative;
@@ -8,10 +8,10 @@
     text-transform: uppercase;
     font-family: 'Merriweather', serif;
     color: whitesmoke;
-}
 
-.main-title > span{
-    opacity: 0;
+    span{
+        opacity: 0;
+    }
 }
 
 @keyframes fadein{
@@ -20,5 +20,14 @@
     }
     to{
         opacity: 100;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 100;
+    }
+    to{
+        opacity: 0;
     }
 }

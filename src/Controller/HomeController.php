@@ -12,4 +12,8 @@ class HomeController
     public function home(){
         $this->render("Home/home","Home");
     }
+
+    public function game(){
+        $this->render("Home/game","Home");
+    }
 }

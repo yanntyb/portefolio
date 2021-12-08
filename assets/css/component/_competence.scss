@@ -1,0 +1,50 @@
+.competence{
+    width: 30%;
+    position: relative;
+    padding: 2%;
+    display: none;
+    background-color: #f4b5a4;
+
+    .main-title{
+        font-size: 70%;
+        text-transform: capitalize;
+        color: #3a6aa5;
+    }
+
+    h1{
+        margin-bottom: 2%;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &:nth-child(even){
+        position: relative;
+        right: -40%;
+        box-shadow: -4px 4px 8px 2px rgba(17,42,47,0.4);
+    }
+
+    &:nth-child(odd){
+        left: -40%;
+        box-shadow: 4px 4px 8px 2px rgba(17,42,47,0.4);
+    }
+}
+
+
+@keyframes fadeinLeft {
+    from{
+        left: -40;
+    }
+    to{
+        left: 0;
+    }
+}
+
+
+@keyframes fadeinRight {
+    from{
+        right: -40;
+    }
+    to{
+        right: 0;
+    }
+}

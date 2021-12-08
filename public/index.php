@@ -8,6 +8,9 @@ if(isset($_GET["route"])){
         case "home":
             (new HomeController())->home();
             break;
+        case "admin":
+            (new AdminController())->adminConnect();
+            break;
         default:
             (new HomeController())->home();
 
