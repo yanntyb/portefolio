@@ -39,7 +39,7 @@ new TextAnim(document.querySelector("#first"),["Yann Tyburczy"],200,false);
 new TextAnimManager(document.querySelector("#second"),
     {
         1:{
-            title: ["Développeur Web / Web mobile"],
+            title: ["Développeur Web","Web mobile"],
             speed: 100,
             callback: () => {
                 enableScroll();

@@ -17,7 +17,7 @@
     box-shadow: 0px 0px 8px 7px rgba(0,0,0,0.3);
 
     #first{
-        font-size: 80%;
+        font-size: 200%;
         padding-top: 36vh;
     }
 
@@ -67,6 +67,18 @@ $existing-bg: 1 2 3 4;
     }
 }
 
+
+@media screen and (max-width: 772px){
+    #first{
+        font-size: 130% !important;
+    }
+}
+
+@media screen and (max-width: 552px){
+    #first{
+        font-size: 100% !important;
+    }
+}
 
 ::-webkit-scrollbar {
   width: 7px;
