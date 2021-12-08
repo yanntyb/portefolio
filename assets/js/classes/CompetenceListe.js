@@ -71,8 +71,6 @@ class CompetenceListe {
                     }
                     this.createChild(dataForm)
             }
-
-
         }
     }
 
@@ -80,9 +78,9 @@ class CompetenceListe {
         this.div = document.createElement("div");
         this.parent.appendChild(this.div);
         this.div.className = "competence-list";
-        let nav = document.querySelector("#nav");
         newExposure.pushListeningEle(this.div, () => {
-            if(!this.display && nav.dataset.change){
+            console.log(this.div);
+            if(!this.display && document.querySelector("#nav").dataset.display === "true"){
                 this.display = true;
                 let index = 0;
                 for(let i of Object.keys(data)){

@@ -20,16 +20,18 @@ class Competence{
             `;
         this.div.style.display = "block";
         if(this.index % 2  === 0){
-            this.div.style.animationName = "fadeinLeft";
-            this.div.style.animationDuration = `${Math.floor(Math.random() * (3000 - 1100 + 1) + 1100)}ms`;
-            this.div.style.animationFillMode = "forwards";
+            this.animate("fadeinLeft");
         }
         else{
-            this.div.style.animationName = "fadeinRight";
-            this.div.style.animationDuration = `${Math.floor(Math.random() * (3000 - 1100 + 1) + 1100)}ms`;
-            this.div.style.animationFillMode = "forwards";
+            this.animate("fadeinRight");
         }
         new TextAnim(this.div.querySelector(".content"),this.data.content,30);
+    }
+
+    animate(animationName){
+        this.div.style.animationName = animationName;
+        this.div.style.animationDuration = `${Math.floor(Math.random() * (3000 - 1100 + 1) + 1100)}ms`;
+        this.div.style.animationFillMode = "forwards";
     }
 
     __init__(){

@@ -5,17 +5,18 @@ class Nav{
         this.event();
     }
 
-    animate(change,animationElemName,durationElem,animationChildName,durationChild){
+    animate(change,animationElemName,durationElem,animationChildName,durationChild) {
         this.elem.dataset.change = change;
         this.elem.style.animationName = animationElemName;
         this.elem.style.animationDuration = durationElem;
         this.elem.style.animationFillMode = "forwards";
-        for(let child of this.elem.children){
+        for (let child of this.elem.children) {
             child.style.animationName = animationChildName;
             child.style.animationDuration = durationChild;
             child.style.animationFillMode = "forwards";
         }
     }
+
 
     event(){
         window.addEventListener("scroll", (e) => {

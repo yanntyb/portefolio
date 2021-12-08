@@ -25,9 +25,13 @@ const enableScroll = () => {
     nav.style.animationName = "display";
     nav.style.animationDuration = "1s";
     nav.style.animationFillMode= "forwards";
+    nav.style.opacity = "1";
     window.setTimeout(() => {
-        nav.style.opacity = "1";
-    })
+        nav.dataset.display = "true";
+        document.querySelector("#pres-2").style.display = "flex";
+        document.querySelector("#pres-3").style.display = "flex";
+        document.querySelector("#pres-4").style.display = "flex";
+    },1000);
 }
 
 new TextAnim(document.querySelector("#first"),["Yann Tyburczy"],200,false);
